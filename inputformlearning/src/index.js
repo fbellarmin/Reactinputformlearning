@@ -3,6 +3,21 @@ import ReactDOM from 'react-dom';
 import '../src/index.css';
 
 class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "Minta János"
+    };
+    
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+  handleChange(event) {
+    this.setState({
+      name: event.target.value
+    });
+  }
+  
   render() {
     return (
       <div className="container">
@@ -11,12 +26,15 @@ class Form extends React.Component {
           <form>
             <label>
               Name:
-              <input type="text" />
+              <input type="text" onChange={this.handleChange} />
             </label>
           </form>
         </div>          
         <div className="form-output">
           <h1>Output</h1>
+          <p>
+            <strong>Name:</strong> {this.state.name}
+          </p>
         </div>
       </div>
     );

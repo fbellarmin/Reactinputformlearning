@@ -22,6 +22,9 @@ class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     alert("Mentjük már is!");
+    this.setState({
+      name: "",
+    });
   }
   
   render() {
@@ -32,7 +35,10 @@ class Form extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <label>
               Name:
-              <input type="text" onChange={this.handleChange} />
+              <input
+                type="text"
+                value={this.state.name}
+                onChange={this.handleChange} />
             </label>
             <input className="submit-button" type="submit" value="submit" />
           </form>

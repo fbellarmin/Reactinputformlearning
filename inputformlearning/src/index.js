@@ -9,13 +9,16 @@ class Form extends React.Component {
       name: "Minta János",
     };
     
-    this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-  handleChange(event) {
+  handleInputChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    
     this.setState({
-      name: event.target.value,
+      [name]: value,
     });
   }
   
@@ -23,7 +26,10 @@ class Form extends React.Component {
     event.preventDefault();
     alert("Mentjük már is!");
     this.setState({
-      name: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
     });
   }
   
@@ -34,11 +40,43 @@ class Form extends React.Component {
           <h1>Form</h1>
           <form onSubmit={this.handleSubmit}>
             <label>
-              Name:
+              First Name:
               <input
                 type="text"
-                value={this.state.name}
-                onChange={this.handleChange} />
+                name="firstName"
+                value={this.state.firstName}
+                onChange={this.handleInputChange}
+              />
+            </label>
+            <br />
+            <label>
+              Last Name:
+              <input
+                type="text"
+                name="lastName"
+                value={this.state.lastName}
+                onChange={this.handleInputChange}
+              />
+            </label>
+            <br />
+            <label>
+              Email:
+              <input
+                type="text"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+              />
+            </label>
+            <br />
+            <label>
+              Password:
+              <input
+                type="text"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+              />
             </label>
             <input className="submit-button" type="submit" value="submit" />
           </form>
@@ -46,7 +84,16 @@ class Form extends React.Component {
         <div className="form-output">
           <h1>Output</h1>
           <p>
-            <strong>Name:</strong> {this.state.name}
+            <strong>First name:</strong> {this.state.firstName}
+          </p>
+          <p>
+            <strong>Last name:</strong> {this.state.lastName}
+          </p>
+          <p>
+            <strong>Email:</strong> {this.state.email}
+          </p>
+          <p>
+            <strong>Password:</strong> {this.state.password}
           </p>
         </div>
       </div>
